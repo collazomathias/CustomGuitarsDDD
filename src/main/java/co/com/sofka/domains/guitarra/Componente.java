@@ -1,18 +1,19 @@
 package co.com.sofka.domains.guitarra;
 
 import co.com.sofka.domain.generic.Entity;
-import co.com.sofka.domains.guitarra.value.componente.ComponenteId;
-import co.com.sofka.domains.guitarra.value.componente.Descripcion;
-import co.com.sofka.domains.guitarra.value.componente.Nombre;
+import co.com.sofka.domains.guitarra.values.componente.ComponenteId;
+import co.com.sofka.domains.guitarra.values.componente.Descripcion;
+import co.com.sofka.domains.guitarra.values.componente.Nombre;
 
-public class Componente extends Entity<ComponenteId>{
+public class Componente extends Entity<ComponenteId> {
 
-    private Descripcion descripcion;
-    private Nombre nombre;
+    private final Descripcion descripcion;
+    private final Nombre nombre;
 
-    public Componente(ComponenteId entityId) {
+    public Componente(ComponenteId entityId, Descripcion descripcion, Nombre nombre) {
         super(entityId);
-        //TODO Auto-generated constructor stub
+        this.descripcion = descripcion;
+        this.nombre = nombre;
     }
 
     public Descripcion descripcion() {
@@ -22,5 +23,9 @@ public class Componente extends Entity<ComponenteId>{
     public Nombre nombre() {
         return nombre;
     }
-    
+
+    public ComponenteId componenteId() {
+        return this.componenteId();
+    }
+
 }

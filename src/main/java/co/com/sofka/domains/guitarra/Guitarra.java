@@ -1,20 +1,37 @@
 package co.com.sofka.domains.guitarra;
 
-import co.com.sofka.domain.generic.Entity;
-import co.com.sofka.domains.guitarra.value.guitarra.Afinado;
-import co.com.sofka.domains.guitarra.value.guitarra.Estado;
-import co.com.sofka.domains.guitarra.value.guitarra.GuitarraId;
-import co.com.sofka.domains.guitarra.value.guitarra.LuthierId;
+import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domains.guitarra.values.componente.ComponenteId;
+import co.com.sofka.domains.guitarra.values.guitarra.Afinado;
+import co.com.sofka.domains.guitarra.values.guitarra.Estado;
+import co.com.sofka.domains.guitarra.values.guitarra.GuitarraId;
+import co.com.sofka.domains.guitarra.values.guitarra.LuthierId;
+import co.com.sofka.domains.guitarra.values.shared.Precio;
 
-public class Guitarra extends Entity<GuitarraId> {
+import java.util.Iterator;
+import java.util.List;
+
+public class Guitarra extends AggregateEvent<GuitarraId> {
 
     private Afinado afinado;
     private Estado estado;
+    private Precio precio;
     private LuthierId luthierId;
+    private Tipo tipo;
+    private Garantia garantia;
+    private List<Componente> componentes;
 
-    public Guitarra(GuitarraId entityId) {
+    public Guitarra(GuitarraId entityId, Afinado afinado, Estado estado, Precio precio, LuthierId luthierId,
+                    Tipo tipo, Garantia garantia, List<Componente> componentes) {
         super(entityId);
-        //TODO Auto-generated constructor stub
+
+        this.afinado = afinado;
+        this.estado = estado;
+        this.precio = precio;
+        this.luthierId = luthierId;
+        this.tipo = tipo;
+        this.garantia = garantia;
+        this.componentes = componentes;
     }
 
     public Afinado afinado() {
@@ -29,20 +46,24 @@ public class Guitarra extends Entity<GuitarraId> {
         return luthierId;
     }
 
-    public void actualizarEstado(){
-        if(this.estado.value() == true){
-            this.estado = new Estado(false);
-        } else {
-            this.estado = new Estado(true);
-        }
+    public Precio precio() {
+        return precio;
     }
 
-    public void actualizarAfinado(){
-        if(this.afinado.value() == true){
-            this.afinado = new Afinado(false);
-        } else {
-            this.afinado = new Afinado(true);
-        }
+    public Tipo tipo() {
+        return tipo;
     }
-    
+
+    public Garantia garantia() {
+        return garantia;
+    }
+
+    public GuitarraId guitarraId() {
+        return guitarraId();
+    }
+
+    //Lista de componentes?
+    public List<Componente> componentes() {
+        return componentes;
+    }
 }

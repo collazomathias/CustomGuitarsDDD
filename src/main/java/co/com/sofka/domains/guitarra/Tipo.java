@@ -1,19 +1,22 @@
 package co.com.sofka.domains.guitarra;
 
 import co.com.sofka.domain.generic.Entity;
-import co.com.sofka.domains.guitarra.value.tipo.CantidadCuerdas;
-import co.com.sofka.domains.guitarra.value.tipo.TipoCuerdas;
-import co.com.sofka.domains.guitarra.value.tipo.TipoGuitarra;
-import co.com.sofka.domains.guitarra.value.tipo.TipoId;
+import co.com.sofka.domains.guitarra.values.tipo.CantidadCuerdas;
+import co.com.sofka.domains.guitarra.values.tipo.TipoCuerdas;
+import co.com.sofka.domains.guitarra.values.tipo.TipoGuitarra;
+import co.com.sofka.domains.guitarra.values.tipo.TipoId;
 
 public class Tipo extends Entity<TipoId> {
 
-    private CantidadCuerdas cantidadCuerdas;
-    private TipoCuerdas tipoCuerdas;
-    private TipoGuitarra tipoGuitarra;
+    private final CantidadCuerdas cantidadCuerdas;
+    private final TipoCuerdas tipoCuerdas;
+    private final TipoGuitarra tipoGuitarra;
 
-    public Tipo(TipoId entityId) {
+    public Tipo(TipoId entityId, CantidadCuerdas cantidadCuerdas, TipoCuerdas tipoCuerdas, TipoGuitarra tipoGuitarra) {
         super(entityId);
+        this.cantidadCuerdas = cantidadCuerdas;
+        this.tipoCuerdas = tipoCuerdas;
+        this.tipoGuitarra = tipoGuitarra;
     }
 
     public CantidadCuerdas cantidadCuerdas() {

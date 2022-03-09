@@ -1,22 +1,20 @@
-package co.com.sofka.domains.guitarra.value.guitarra;
+package co.com.sofka.domains.guitarra.values.guitarra;
 
 import co.com.sofka.domain.generic.ValueObject;
 
-public class Estado implements ValueObject<Boolean> {
-    
+public class Afinado implements ValueObject<Boolean> {
     private final Boolean value;
 
-    public Estado(){
+    public Afinado(){
         this.value = false;
     }
     
-    public Estado(Boolean estado){
-        this.value = estado;
+    public Afinado(Boolean afinado){
+        this.value = afinado;
     }
 
     @Override
     public Boolean value(){
         return this.value;
     }
-
 }

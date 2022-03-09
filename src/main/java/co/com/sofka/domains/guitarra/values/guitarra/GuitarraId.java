@@ -1,4 +1,4 @@
-package co.com.sofka.domains.guitarra.value.guitarra;
+package co.com.sofka.domains.guitarra.values.guitarra;
 
 import co.com.sofka.domain.generic.Identity;
 
