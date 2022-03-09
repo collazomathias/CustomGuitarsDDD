@@ -2,15 +2,15 @@ package co.com.sofka.domains.guitarra.events;
 
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.domains.guitarra.values.componente.Descripcion;
-import co.com.sofka.domains.guitarra.values.componente.Nombre;
+import co.com.sofka.domains.guitarra.values.componente.NombreComponente;
 import co.com.sofka.domains.guitarra.values.guitarra.GuitarraId;
 
 public class ComponenteAgregado extends DomainEvent {
     private final GuitarraId guitarraId;
     private final Descripcion descripcion;
-    private final Nombre nombre;
+    private final NombreComponente nombre;
 
-    public ComponenteAgregado(GuitarraId guitarraId, Descripcion descripcion, Nombre nombre) {
+    public ComponenteAgregado(GuitarraId guitarraId, Descripcion descripcion, NombreComponente nombre) {
         super("guitarra.componenteagregado");
         this.guitarraId = guitarraId;
         this.descripcion = descripcion;
@@ -25,7 +25,7 @@ public class ComponenteAgregado extends DomainEvent {
         return descripcion;
     }
 
-    public Nombre getNombre() {
+    public NombreComponente getNombre() {
         return nombre;
     }
 }

@@ -1,5 +1,5 @@
 package co.com.sofka.domains.luthier.value.certificacion;
 
-public class especialidad {
+public class Especialidad {
     
 }

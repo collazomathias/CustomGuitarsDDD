@@ -1,5 +1,7 @@
 package co.com.sofka.domains.luthier.value.luthier;
 
-public class luthierId {
+import co.com.sofka.domain.generic.Identity;
+
+public class LuthierId extends Identity {
     
 }

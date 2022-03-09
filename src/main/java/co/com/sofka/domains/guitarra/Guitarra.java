@@ -1,14 +1,12 @@
 package co.com.sofka.domains.guitarra;
 
 import co.com.sofka.domain.generic.AggregateEvent;
-import co.com.sofka.domains.guitarra.values.componente.ComponenteId;
 import co.com.sofka.domains.guitarra.values.guitarra.Afinado;
 import co.com.sofka.domains.guitarra.values.guitarra.Estado;
 import co.com.sofka.domains.guitarra.values.guitarra.GuitarraId;
 import co.com.sofka.domains.guitarra.values.guitarra.LuthierId;
 import co.com.sofka.domains.guitarra.values.shared.Precio;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class Guitarra extends AggregateEvent<GuitarraId> {
