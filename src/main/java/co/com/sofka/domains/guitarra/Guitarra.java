@@ -1,67 +1,70 @@
 package co.com.sofka.domains.guitarra;
 
-import co.com.sofka.domain.generic.AggregateEvent;
-import co.com.sofka.domains.guitarra.values.guitarra.Afinado;
-import co.com.sofka.domains.guitarra.values.guitarra.Estado;
-import co.com.sofka.domains.guitarra.values.guitarra.GuitarraId;
-import co.com.sofka.domains.guitarra.values.guitarra.LuthierId;
-import co.com.sofka.domains.guitarra.values.shared.Precio;
-
+import java.util.ArrayList;
 import java.util.List;
+
+import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
+import co.com.sofka.domains.guitarra.events.GuitarraCreada;
+import co.com.sofka.domains.guitarra.values.Afinado;
+import co.com.sofka.domains.guitarra.values.Estado;
+import co.com.sofka.domains.guitarra.values.GuitarraId;
+import co.com.sofka.domains.guitarra.values.PrecioGuitarra;
+import co.com.sofka.domains.luthier.value.LuthierId;
 
 public class Guitarra extends AggregateEvent<GuitarraId> {
 
-    private Afinado afinado;
-    private Estado estado;
-    private Precio precio;
-    private LuthierId luthierId;
-    private Tipo tipo;
-    private Garantia garantia;
-    private List<Componente> componentes;
+    protected LuthierId luthierId;
+    protected ArrayList<Componente> componentes;
+    protected Garantia garantia;
+    protected Tipo tipo;
+    protected PrecioGuitarra precioGuitarra;
+    protected Estado estado;
+    protected Afinado afinado;
 
-    public Guitarra(GuitarraId entityId, Afinado afinado, Estado estado, Precio precio, LuthierId luthierId,
-                    Tipo tipo, Garantia garantia, List<Componente> componentes) {
-        super(entityId);
+    public Guitarra(GuitarraId guitarraId, LuthierId luthierId, Garantia garantia, Tipo tipo, Estado estado, Afinado afinado) {
+        super(guitarraId);
+        appendChange(new GuitarraCreada(garantia, luthierId, tipo, estado, afinado)).apply();
+        subscribe(new GuitarraEventChange(this));
+    }
 
-        this.afinado = afinado;
-        this.estado = estado;
-        this.precio = precio;
-        this.luthierId = luthierId;
-        this.tipo = tipo;
-        this.garantia = garantia;
-        this.componentes = componentes;
+    private Guitarra(GuitarraId guitarraId) {
+        super(guitarraId);
+        subscribe(new GuitarraEventChange(this));
+    }
+
+    public static Guitarra from(GuitarraId guitarraId, List<DomainEvent> events) {
+        var guitarra = new Guitarra(guitarraId);
+        events.forEach(guitarra::applyEvent);
+        return guitarra;
     }
 
     public Afinado afinado() {
         return afinado;
     }
 
+    public ArrayList<Componente> componentes() {
+        return componentes;
+    }
+
     public Estado estado() {
         return estado;
-    }
-
-    public LuthierId luthierId() {
-        return luthierId;
-    }
-
-    public Precio precio() {
-        return precio;
-    }
-
-    public Tipo tipo() {
-        return tipo;
     }
 
     public Garantia garantia() {
         return garantia;
     }
 
-    public GuitarraId guitarraId() {
-        return guitarraId();
+    public LuthierId luthierId() {
+        return luthierId;
     }
 
-    //Lista de componentes?
-    public List<Componente> componentes() {
-        return componentes;
+    public PrecioGuitarra precioGuitarra() {
+        return precioGuitarra;
     }
+
+    public Tipo tipo() {
+        return tipo;
+    }
+    
 }
