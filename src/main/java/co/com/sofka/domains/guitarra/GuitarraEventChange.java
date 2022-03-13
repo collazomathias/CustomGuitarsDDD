@@ -1,5 +1,7 @@
 package co.com.sofka.domains.guitarra;
 
+import java.util.ArrayList;
+
 import co.com.sofka.domain.generic.EventChange;
 import co.com.sofka.domains.guitarra.events.ComponenteAgregado;
 import co.com.sofka.domains.guitarra.events.ComponenteQuitado;
@@ -33,6 +35,7 @@ public class GuitarraEventChange extends EventChange {
             guitarra.garantia = event.getGarantia();
             guitarra.tipo = event.getTipo();
             guitarra.luthierId = event.getLuthierId();
+            guitarra.componentes = new ArrayList<Componente>();
         });
 
         apply((ComponenteAgregado event) -> {
